@@ -11,6 +11,9 @@ namespace Ibistic.Public.NSwag.Extensions
     /// <summary>
     /// Add the api version value specified in the ApiVersion attribute to the query string path of an action controller (controller/action -> controller/action?api-version=X.X)
     /// </summary>
+    /// <remarks>
+    /// In case of multiple versions in a controller or action, this processor requires them ordered from the newest to the oldest.
+    /// </remarks>
     public class ApiVersionQueryStringProcessor : NSwagProcessors.IOperationProcessor
     {
         /// <summary>Processes an action controller trying to add its api version to the action query string path.</summary>
