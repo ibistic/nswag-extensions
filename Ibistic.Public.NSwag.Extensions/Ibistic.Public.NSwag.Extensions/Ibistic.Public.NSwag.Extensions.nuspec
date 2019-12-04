@@ -5,6 +5,7 @@
     <version>1.0.0-alpha1</version>
     <authors>Ibistic Technologies</authors>
     <owners>Ibistic Technologies</owners>
+    <license>MIT</license>
     <projectUrl>https://github.com/ibistic/nswag-extensions</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Package description</description>
