@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -8,19 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Ibistic.Public.NSwag.Extensions</RootNamespace>
     <AssemblyName>Ibistic.Public.NSwag.Extensions</AssemblyName>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <Version>1.0.0-alpha1</Version>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Ibistic Technologies</Authors>
-    <Company>Ibistic Technologies</Company>
-    <Copyright>Copyright © Ibistic Technologies 2019</Copyright>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <RepositoryType>Git</RepositoryType>
-    <PackageReleaseNotes>1.0.0: first alpha version</PackageReleaseNotes>
-    <PackageProjectUrl>https://github.com/ibistic/nswag-extensions</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/ibistic/nswag-extensions.git</RepositoryUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -83,4 +74,5 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
