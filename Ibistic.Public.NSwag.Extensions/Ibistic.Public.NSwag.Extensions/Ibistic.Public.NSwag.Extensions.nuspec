@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Ibistic.Public.NSwag.Extensions</id>
+    <version>1.0.0-alpha1</version>
+    <authors>Ibistic Technologies</authors>
+    <owners>Ibistic Technologies</owners>
+    <projectUrl>https://github.com/ibistic/nswag-extensions</projectUrl>
+    <repositoryUrl>https://github.com/ibistic/nswag-extensions.git</repositoryUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Package description</description>
+    <releaseNotes>1.0.0: First alpha version</releaseNotes>
+    <copyright>Copyright © Ibistic Technologies 2019</copyright>
+    <tags>NSwag ApiVersion</tags>
+  </metadata>
+</package>
