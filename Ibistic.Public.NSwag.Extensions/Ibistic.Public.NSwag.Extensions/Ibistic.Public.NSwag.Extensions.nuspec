@@ -3,14 +3,24 @@
   <metadata>
     <id>Ibistic.Public.NSwag.Extensions</id>
     <version>1.0.0-alpha1</version>
+    <description>
+      A framework that provides extensions to create OpenAPI 3.0 specifications with NSwag.
+
+      Data sources utilized:
+      NSwag toolchain from https://github.com/RicoSuter/NSwag under the license https://github.com/RicoSuter/NSwag/blob/master/LICENSE.md.
+
+      Please only use this component if you agree to and comply with the above license terms.
+    </description>
     <authors>Ibistic Technologies</authors>
     <owners>Ibistic Technologies</owners>
-    <license>MIT</license>
+    <license type="expression">MIT</license>
     <projectUrl>https://github.com/ibistic/nswag-extensions</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>Package description</description>
     <releaseNotes>1.0.0: First alpha version</releaseNotes>
     <copyright>Copyright © Ibistic Technologies 2019</copyright>
     <tags>NSwag ApiVersion</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.7.2" />
+    </dependencies>
   </metadata>
 </package>
