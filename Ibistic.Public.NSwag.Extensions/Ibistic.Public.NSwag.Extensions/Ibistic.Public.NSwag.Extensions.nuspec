@@ -6,7 +6,6 @@
     <authors>Ibistic Technologies</authors>
     <owners>Ibistic Technologies</owners>
     <projectUrl>https://github.com/ibistic/nswag-extensions</projectUrl>
-    <repositoryUrl>https://github.com/ibistic/nswag-extensions.git</repositoryUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Package description</description>
     <releaseNotes>1.0.0: First alpha version</releaseNotes>
