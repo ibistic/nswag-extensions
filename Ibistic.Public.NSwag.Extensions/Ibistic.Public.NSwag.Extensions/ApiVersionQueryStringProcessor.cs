@@ -1,5 +1,4 @@
-﻿using Microsoft.Web.Http;
-using Namotion.Reflection;
+﻿using Namotion.Reflection;
 using NSwag.Generation.Processors.Contexts;
 using System.Collections;
 using System.Linq;
@@ -8,12 +7,6 @@ using NSwagProcessors = NSwag.Generation.Processors;
 
 namespace Ibistic.Public.NSwag.Extensions
 {
-    /// <summary>
-    /// Add the api version value specified in the ApiVersion attribute to the query string path of an action controller (controller/action -> controller/action?api-version=X.X)
-    /// </summary>
-    /// <remarks>
-    /// In case of multiple versions in a controller or action, this processor requires them ordered from the newest to the oldest.
-    /// </remarks>
     public class ApiVersionQueryStringProcessor : NSwagProcessors.IOperationProcessor
     {
         /// <summary>Processes an action controller trying to add its api version to the action query string path.</summary>
@@ -24,7 +17,7 @@ namespace Ibistic.Public.NSwag.Extensions
             var nswagApiVersionProcessor = context.Settings.OperationProcessors.TryGet<NSwagProcessors.ApiVersionProcessor>();
             string[] filteredVersions = nswagApiVersionProcessor.IncludedVersions;
 
-            string[] actionApiVersions = GetActionApiVersions(context, typeof(ApiVersionAttribute).Name);
+            string[] actionApiVersions = GetActionApiVersions(context);
 
             // If the action/controller has no the ApiVersion attribute
             if (actionApiVersions.Length == 0)
@@ -53,12 +46,12 @@ namespace Ibistic.Public.NSwag.Extensions
             return false;
         }
 
-        private string[] GetActionApiVersions(OperationProcessorContext context, string attributeType)
+        private string[] GetActionApiVersions(OperationProcessorContext context)
         {
             var versionAttributes = context.MethodInfo.GetCustomAttributes()
                 .Concat(context.MethodInfo.DeclaringType.GetTypeInfo().GetCustomAttributes())
                 .Concat(context.ControllerType.GetTypeInfo().GetCustomAttributes(true))
-                .GetAssignableToTypeName(attributeType, TypeNameStyle.Name)
+                .GetAssignableToTypeName("ApiVersionAttribute", TypeNameStyle.Name)
                 .Where(a => a.HasProperty("Versions"))
                 .SelectMany((dynamic a) => ((IEnumerable)a.Versions).OfType<object>().Select(v => v.ToString()))
                 .ToArray();
