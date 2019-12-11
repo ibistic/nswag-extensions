@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.0-alpha2</Version>
+    <Version>1.0.0</Version>
     <Authors>Ibistic Technologies</Authors>
     <Description>A framework that provides extensions to create OpenAPI 3.0 specifications with NSwag.
 
@@ -15,7 +15,7 @@ Please only use this component if you agree to and comply with the above license
     <RepositoryUrl>https://github.com/ibistic/nswag-extensions.git</RepositoryUrl>
     <PackageTags>NSwag ApiVersion</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>1.0.0-alpha2: Second alpha version</PackageReleaseNotes>
+    <PackageReleaseNotes>1.0.0: First release version</PackageReleaseNotes>
     <Copyright>Copyright © Ibistic Technologies 2019</Copyright>
     <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
