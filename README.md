@@ -19,7 +19,7 @@ Ibistic.Public.NSwag.Extensions has by now one new api version processor.
 
 The api version processor from NSwag (NSwagProcessors.ApiVersionProcessor) only works when the versioning strategy used is based on the uri, i.e. /api/1.0/helloworld.
 
-ApiVersionQueryStringProcessor has been built to query string versioning, which is the default versioning mode in Web API 2, i.e. /api/helloworld?api-version=1.0.
+ApiVersionQueryStringProcessor has been built to support query string versioning, which is the default versioning mode in Web API 2, i.e. /api/helloworld?api-version=1.0.
 
 The way to use it is just to specify the new processor when the Open API specification is gonna be created. There are several ways to create that specification, by command line would be:
 
