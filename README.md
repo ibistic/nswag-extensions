@@ -42,7 +42,7 @@ Remember to decorate your controllers and/or actions with the [ApiVersion] attri
 
 This is the result once the specificacion is created (used Redoc to render it).
 
-
+![Redoc image](docs/images/redoc.png)
 
 ## License
 
