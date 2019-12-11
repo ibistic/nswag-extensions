@@ -35,7 +35,7 @@ where MyNugetAssemblyPath is the folder where Ibistic.Public.NSwag.Extensions ha
 Remember to decorate your controllers and/or actions with the [ApiVersion] attribute.
 
 ``` csharp
-	[ApiVersion("1.0")]
+    [ApiVersion("1.0")]
     [RoutePrefix("api/helloworld")]
     public sealed class HelloWorldController : ApiController
 ```
