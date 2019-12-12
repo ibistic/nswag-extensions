@@ -13,7 +13,7 @@ To install Ibistic.Public.NSwag.Extensions, run the following command in the Pac
 
 ## Documentation
 
-Ibistic.Public.NSwag.Extensions has by now one new api version processor.
+Ibistic.Public.NSwag.Extensions currently only has a processor for including api version in the query string.
 
 ### ApiVersionQueryStringProcessor
 
