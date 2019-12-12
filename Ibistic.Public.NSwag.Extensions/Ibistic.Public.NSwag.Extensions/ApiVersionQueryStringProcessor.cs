@@ -19,7 +19,7 @@ namespace Ibistic.Public.NSwag.Extensions
 
             string[] actionApiVersions = GetActionApiVersions(context);
 
-            // If the action/controller has no the ApiVersion attribute
+            // If action/controller has no the ApiVersion attribute
             if (actionApiVersions.Length == 0)
             {
                 // Include action in the OpenApi specification if the document is not being created with filtered versions.
@@ -36,7 +36,7 @@ namespace Ibistic.Public.NSwag.Extensions
             foreach (string actionApiVersion in actionApiVersions)
             {
                 // The first matching is considered the preferred api version usage
-                if (nswagApiVersionProcessor.IncludedVersions.Contains(actionApiVersion))
+                if (filteredVersions.Contains(actionApiVersion))
                 {
                     IncludeApiVersionInQueryString(context, actionApiVersion);
                     return true;
