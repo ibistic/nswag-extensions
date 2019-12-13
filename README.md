@@ -32,7 +32,7 @@ nswag webapi2openapi
 
 where MyNugetAssemblyPath is the folder where Ibistic.Public.NSwag.Extensions has been installed.
 
-Remember to decorate your controllers and/or actions with the [ApiVersion] attribute.
+Remember to decorate your controllers and/or actions with the [ApiVersion] attribute and from highest to lowest version.
 
 ``` csharp
     [ApiVersion("1.0")]

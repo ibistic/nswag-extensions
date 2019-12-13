@@ -1,5 +1,6 @@
 ﻿using Namotion.Reflection;
 using NSwag.Generation.Processors.Contexts;
+using System;
 using System.Collections;
 using System.Linq;
 using System.Reflection;
@@ -17,46 +18,52 @@ namespace Ibistic.Public.NSwag.Extensions
             var nswagApiVersionProcessor = context.Settings.OperationProcessors.TryGet<NSwagProcessors.ApiVersionProcessor>();
             string[] filteredVersions = nswagApiVersionProcessor.IncludedVersions;
 
-            string[] actionApiVersions = GetActionApiVersions(context);
+            string higherActionApiVersion = GetHigherActionApiVersion(context);
 
-            // If action/controller has no the ApiVersion attribute
-            if (actionApiVersions.Length == 0)
+            // If no ApiVersion attribute found for the action and its controller...
+            if (String.IsNullOrEmpty(higherActionApiVersion))
             {
                 // Include action in the OpenApi specification if the document is not being created with filtered versions.
                 return filteredVersions == null || filteredVersions.Length == 0;
             }
 
-            // If no filter by versions, get the first (higher) one
+            // If no filter by versions, include it
             if (filteredVersions == null || filteredVersions.Length == 0)
             {
-                IncludeApiVersionInQueryString(context, actionApiVersions[0]);
+                IncludeApiVersionInQueryString(context, higherActionApiVersion);
                 return true;
             }
 
-            foreach (string actionApiVersion in actionApiVersions)
+            // Add action to specification if the action version is included in the list of filtered versions
+            if (filteredVersions.Contains(higherActionApiVersion))
             {
-                // The first matching is considered the preferred api version usage
-                if (filteredVersions.Contains(actionApiVersion))
-                {
-                    IncludeApiVersionInQueryString(context, actionApiVersion);
-                    return true;
-                }
+                IncludeApiVersionInQueryString(context, higherActionApiVersion);
+                return true;
             }
 
             return false;
         }
 
-        private string[] GetActionApiVersions(OperationProcessorContext context)
+        private string GetHigherActionApiVersion(OperationProcessorContext context)
         {
-            var versionAttributes = context.MethodInfo.GetCustomAttributes()
-                .Concat(context.MethodInfo.DeclaringType.GetTypeInfo().GetCustomAttributes())
-                .Concat(context.ControllerType.GetTypeInfo().GetCustomAttributes(true))
+            // Try get highest api version defined at action level
+            System.Attribute[] actionApiVersionAttributes = context.MethodInfo.GetCustomAttributes()
+                .GetAssignableToTypeName("ApiVersionAttribute", TypeNameStyle.Name)
+                .Where(a => a.HasProperty("Versions"))
+                .ToArray();
+
+            if (actionApiVersionAttributes.Length > 0)
+            {
+                return actionApiVersionAttributes.SelectMany((dynamic a) => ((IEnumerable) a.Versions).OfType<object>().Select(v => v.ToString()))
+                    .First();
+            }
+
+            // Try get highest api version defined at controller level
+            return context.ControllerType.GetTypeInfo().GetCustomAttributes(true)
                 .GetAssignableToTypeName("ApiVersionAttribute", TypeNameStyle.Name)
                 .Where(a => a.HasProperty("Versions"))
                 .SelectMany((dynamic a) => ((IEnumerable)a.Versions).OfType<object>().Select(v => v.ToString()))
-                .ToArray();
-
-            return versionAttributes;
+                .FirstOrDefault();
         }
 
         private void IncludeApiVersionInQueryString(OperationProcessorContext context, string version)
